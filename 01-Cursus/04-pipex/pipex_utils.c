@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:43:18 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/13 22:05:40 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:14:01 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	exec_comm(char *argv, char **envp)
 	if (!path)
 	{
 		free_str_list(command);
-		error("Path error");
+		error("Path error!");
 	}
 	if (execve(path, command, envp) == -1)
 		error("Error during execution");

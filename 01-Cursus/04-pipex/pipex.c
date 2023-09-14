@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:42:05 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/13 19:16:13 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:23:57 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	f_parent(char **argv, char **envp, int *pipex_fd)
 
 	fd_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd_out == -1)
-		error("Error accessing output file");
+		error("Error accessing output file ");
 	dup2(pipex_fd[0], STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);
 	close(pipex_fd[1]);

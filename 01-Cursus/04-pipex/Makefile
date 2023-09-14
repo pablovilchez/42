@@ -6,32 +6,30 @@
 #    By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 21:49:44 by pvilchez          #+#    #+#              #
-#    Updated: 2023/09/13 22:34:03 by pvilchez         ###   ########.fr        #
+#    Updated: 2023/09/14 14:20:55 by pvilchez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-LIB = pipex_lib.h
+CC = gcc -c
+FLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
 
 FILES = pipex.c pipex_utils.c
-
 OBJECTS = $(FILES:.c=.o)
-
 LIBFT_PATH = libft/libft.a
 
-FLAGS = -Wall -Wextra -Werror
-
-all: $(NAME)
-
-$(NAME): $(LIBFT_PATH) $(OBJECTS)
-	gcc $(FLAGS) -o $(NAME) $(OBJECTS) $(LIB) $(LIBFT_PATH)
-
-$(OBJECTS): $(FILES)
-	gcc $(FLAGS) -c $(FILES)
+all: $(LIBFT_PATH) $(NAME)
 
 $(LIBFT_PATH):
-	make -C libft/ all
+	make -C libft/
+
+$(NAME): $(OBJECTS)
+	gcc $(OBJECTS) $(LIBFT_PATH) -o $(NAME)
+	@echo "aaaaaaaaaaaaaaaaaaa"
+
+$(OBJECTS):
+	$(CC) $(FLAGS) -c $(FILES)
 
 clean:
 	make -C libft/ clean
