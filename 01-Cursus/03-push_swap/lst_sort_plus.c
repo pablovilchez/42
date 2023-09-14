@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 06:00:01 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/07/11 12:08:33 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:13:06 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ void	lst_sort_plus(t_node **lst_a, t_node **lst_b)
 		lst_sort_three(lst_a, lst_b);
 	while (ft_lstsize(*lst_b) > 0)
 	{
+		lst_print_stacks(lst_a, lst_b);
+		lst_print_structs(lst_a, lst_b);
 		lst_fill_stats(lst_a, lst_b);
 		node_pos = lst_select_node(lst_b);
 		node = *lst_b;
