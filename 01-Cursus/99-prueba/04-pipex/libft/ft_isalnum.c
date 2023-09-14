@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors.c                                     :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 19:05:36 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/06/14 19:25:07 by pvilchez         ###   ########.fr       */
+/*   Created: 2023/04/17 23:30:04 by pvilchez          #+#    #+#             */
+/*   Updated: 2023/04/20 01:09:02 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftpipex.h"
-
-int	check_errors(int argc, char *argv[])
+int	ft_isalnum(char c)
 {
-	if (argc < 5)
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
-	return (0);
+	else if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

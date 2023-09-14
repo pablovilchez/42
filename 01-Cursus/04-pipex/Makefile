@@ -5,14 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/17 20:09:10 by pvilchez          #+#    #+#              #
-#    Updated: 2023/06/10 00:33:57 by pvilchez         ###   ########.fr        #
+#    Created: 2023/06/01 21:49:44 by pvilchez          #+#    #+#              #
+#    Updated: 2023/09/13 22:34:03 by pvilchez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftpipex.a
+NAME = pipex
 
-FILES = main.c pipex.c
+LIB = pipex_lib.h
+
+FILES = pipex.c pipex_utils.c
 
 OBJECTS = $(FILES:.c=.o)
 
@@ -21,11 +23,9 @@ LIBFT_PATH = libft/libft.a
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
-	gcc $(FLAGS) -o pipex main.c $(NAME)
 
 $(NAME): $(LIBFT_PATH) $(OBJECTS)
-	cp $(LIBFT_PATH) $(NAME)
-	ar rcs $(NAME) $(OBJECTS)
+	gcc $(FLAGS) -o $(NAME) $(OBJECTS) $(LIB) $(LIBFT_PATH)
 
 $(OBJECTS): $(FILES)
 	gcc $(FLAGS) -c $(FILES)
