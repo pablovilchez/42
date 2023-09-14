@@ -14,7 +14,6 @@ LIBFT_LIB_PATH = assets/libft/libft.a
 HEADERS	= -I $(LIBFT_PATH)/include/ -I ./include
 
 SRC_FILES = pipex.c pipex_utils.c
-BONUS_SRC_FILES = pipex_bonus.c pipex_bonus_utils.c pipex_utils.c
 
 SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
@@ -48,8 +47,4 @@ fclean: clean
 
 re: fclean all
 
-bonus:
-	$(eval SRC_FILES=$(BONUS_SRC_FILES))
-	$(MAKE) all
-
-.PHONY: all clean fclean re $(LIBFT_LIB_PATH) bonus
+.PHONY: all clean fclean re $(LIBFT_LIB_PATH)
