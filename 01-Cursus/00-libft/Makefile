@@ -6,7 +6,7 @@
 #    By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 13:11:53 by pvilchez          #+#    #+#              #
-#    Updated: 2023/05/06 20:41:20 by pvilchez         ###   ########.fr        #
+#    Updated: 2023/09/15 11:33:10 by pvilchez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,8 +69,8 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
-$(OBJECTS): $(FILES)
-	gcc $(FLAGS) -c $(FILES)
+%.o: %.c
+	gcc $(FLAGS) -c $@
 
 bonus: $(OBJECTS) $(OBJ_BONUS)
 	ar rcs $(NAME) $(OBJECTS) $(OBJ_BONUS)

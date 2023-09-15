@@ -15,9 +15,12 @@ HEADERS	= -I $(LIBFT_PATH)/include/ -I ./include
 
 SRC_FILES = pipex.c pipex_utils.c
 BONUS_SRC_FILES = pipex_bonus.c pipex_bonus_utils.c pipex_utils.c
+FILE = bonus
 
 SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
+BONUS_SRC := $(addprefix $(SRC_PATH)/, $(BONUS_SRC_FILES))
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
+OBJ_BONUS = $(BONUS_SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
 
 ORANGE = \033[1;38;5;208m
 RESET = \033[0m
@@ -25,10 +28,11 @@ U_LINE = \033[4m
 YELLOW = \033[1;38;5;226m
 
 all: $(LIBFT_LIB_PATH) $(NAME)
+	if [ -f $(FILE) ] then echo "No hay bonus" else echo "Hay bonus" fi
 
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(HEADERS) -o $@
-	@echo "\n$(ORANGE)$(U_LINE)⭐️ $(NAME): Compiled ⭐️$(RESET) \n"
+	@echo "\n$(ORANGE)$(U_LINE)⭐️ $(NAME): Mandatory Compiled ⭐️$(RESET) \n"
 
 $(LIBFT_LIB_PATH):
 	@$(MAKE) -C $(LIBFT_PATH)
@@ -48,8 +52,9 @@ fclean: clean
 
 re: fclean all
 
-bonus:
-	$(eval SRC_FILES=$(BONUS_SRC_FILES))
-	$(MAKE) all
+bonus: $(LIBFT_LIB_PATH) $(OBJ_BONUS)
+	@$(CC) $(OBJ_BONUS) $(LIBFT_LIB_PATH) $(HEADERS) -o $(NAME)
+	@echo ¨last compilation bonus¨ > bonus
+	@echo "\n$(ORANGE)$(U_LINE)⭐️ $(NAME): Bonus Compiled ⭐️$(RESET) \n"
 
 .PHONY: all clean fclean re $(LIBFT_LIB_PATH) bonus

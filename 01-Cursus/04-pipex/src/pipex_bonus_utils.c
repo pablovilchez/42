@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:11:01 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/14 19:18:22 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/15 11:54:03 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	open_file(char *file_name, int i)
 		error("Error opening file");
 	return (file);
 }
-
-int	count_len
 
 int	read_line(char **line)
 {
