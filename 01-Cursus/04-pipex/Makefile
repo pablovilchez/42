@@ -15,7 +15,6 @@ HEADERS	= -I $(LIBFT_PATH)/include/ -I ./include
 
 SRC_FILES = pipex.c pipex_utils.c
 BONUS_SRC_FILES = pipex_bonus.c pipex_bonus_utils.c pipex_utils.c
-FILE = bonus
 
 SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 BONUS_SRC := $(addprefix $(SRC_PATH)/, $(BONUS_SRC_FILES))
@@ -28,7 +27,11 @@ U_LINE = \033[4m
 YELLOW = \033[1;38;5;226m
 
 all: $(LIBFT_LIB_PATH) $(NAME)
-	if [ -f $(FILE) ] then echo "No hay bonus" else echo "Hay bonus" fi
+	if test -f bonus; then \
+		rm pipex; \
+		rm bonus; \
+		$(MAKE) all; \
+	fi
 
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(HEADERS) -o $@
