@@ -27,7 +27,7 @@ U_LINE = \033[4m
 YELLOW = \033[1;38;5;226m
 
 all: $(LIBFT_LIB_PATH) $(NAME)
-	if test -f bonus; then \
+	@if test -f bonus; then \
 		rm pipex; \
 		rm bonus; \
 		$(MAKE) all; \
@@ -35,7 +35,7 @@ all: $(LIBFT_LIB_PATH) $(NAME)
 
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(HEADERS) -o $@
-	@echo "\n$(ORANGE)$(U_LINE)⭐️ $(NAME): Mandatory Compiled ⭐️$(RESET) \n"
+	@echo "\n$(ORANGE)$(U_LINE)$(NAME): Mandatory Compiled$(RESET) \n"
 
 $(LIBFT_LIB_PATH):
 	@$(MAKE) -C $(LIBFT_PATH)
@@ -58,6 +58,6 @@ re: fclean all
 bonus: $(LIBFT_LIB_PATH) $(OBJ_BONUS)
 	@$(CC) $(OBJ_BONUS) $(LIBFT_LIB_PATH) $(HEADERS) -o $(NAME)
 	@echo ¨last compilation bonus¨ > bonus
-	@echo "\n$(ORANGE)$(U_LINE)⭐️ $(NAME): Bonus Compiled ⭐️$(RESET) \n"
+	@echo "\n$(ORANGE)$(U_LINE)$(NAME): Bonus Compiled$(RESET) \n"
 
 .PHONY: all clean fclean re $(LIBFT_LIB_PATH) bonus
