@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main6.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/15 18:05:50 by pvilchez          #+#    #+#             */
+/*   Updated: 2023/09/15 22:07:49 by pvilchez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -10,12 +22,12 @@ static mlx_image_t* image;
 
 // -----------------------------------------------------------------------------
 
-int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
+int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void ft_randomize(void* param)
+void	ft_randomize(void *param)
 {
 	for (int32_t i = 0; i < image->width; ++i)
 	{
@@ -72,8 +84,9 @@ int32_t main(int32_t argc, const char* argv[])
 		return(EXIT_FAILURE);
 	}
 	mlx_loop_hook(mlx, ft_randomize, mlx);
+	
 	mlx_loop_hook(mlx, ft_hook, mlx);
-	mlx_loop(mlx); //aquí está el problema
+	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }

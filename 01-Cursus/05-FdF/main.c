@@ -6,14 +6,14 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:38:39 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/08/16 19:00:06 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/15 22:46:31 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "MLX42/MLX42.h"
+#include "./MLX42/include/MLX42/MLX42.h"
 
 #define WIDTH 512
 #define HEIGHT 512
@@ -48,8 +48,11 @@ int32_t	main(int32_t argc, const char *argv[])
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	while (1)
+	//mlx_loop(mlx);
+	while(1)
+	{
 		;
+	}
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }

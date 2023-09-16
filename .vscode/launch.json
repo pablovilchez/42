@@ -1,0 +1,6 @@
+{
+
+	"program": "${workspaceFolder}/a.out",
+  	"args": ["arg1", "arg2"]
+
+}

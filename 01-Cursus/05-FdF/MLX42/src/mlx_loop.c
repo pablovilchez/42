@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   mlx_loop.c                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <w2.wizzard@gmail.com>              +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/28 01:24:36 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/06/27 18:07:04 by lde-la-h      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   mlx_loop.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/28 01:24:36 by W2Wizard          #+#    #+#             */
+/*   Updated: 2023/09/15 22:04:42 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 //= Private =//
 
-static void mlx_exec_loop_hooks(mlx_t* mlx)
+static void	mlx_exec_loop_hooks(mlx_t *mlx)
 {
-	const mlx_ctx_t* mlxctx = mlx->context;
+	const mlx_ctx_t	*mlxctx = mlx->context;
 
-	mlx_list_t* lstcpy = mlxctx->hooks;
+	mlx_list_t *lstcpy = mlxctx->hooks;
 	while (lstcpy && !glfwWindowShouldClose(mlx->window))
 	{
 		mlx_hook_t* hook = ((mlx_hook_t*)lstcpy->content);
@@ -89,6 +89,7 @@ bool mlx_loop_hook(mlx_t* mlx, void (*f)(void*), void* param)
 // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 void mlx_loop(mlx_t* mlx)
 {
+	printf("TODO OK");
 	MLX_ASSERT(mlx, "Parameter can't be null");
 
 	double start, oldstart = 0;
