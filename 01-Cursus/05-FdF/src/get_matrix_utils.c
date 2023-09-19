@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   get_matrix_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 21:02:06 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/19 23:00:37 by pvilchez         ###   ########.fr       */
+/*   Created: 2023/09/19 23:41:03 by pvilchez          #+#    #+#             */
+/*   Updated: 2023/09/20 00:17:12 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-t_node	*ft_lstnew(int num, int x, int y)
+int	**nodelst_to_matrix(t_node **nodelst)
 {
+	int		**matrix;
 	t_node	*node;
+	int		line;
+	int		len;
+	int		aux;
 
-	node = malloc(sizeof(t_node));
-	if (node == NULL)
-		return (NULL);
-	node->num = num;
-	node->pos_x = x;
-	node->pos_y = y;
-	node->next = NULL;
-	return (node);
+	line = 0;
+	len = 0;
+	aux = 0;
+	if (check_size(nodelst) && *matrix != NULL)
+	{
+		node = *nodelst;
+		while (node)
+		{
+			node = node->next;
+		}
+	}
+	return (NULL);
 }

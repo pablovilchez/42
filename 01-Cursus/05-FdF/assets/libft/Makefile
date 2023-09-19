@@ -6,7 +6,7 @@
 #    By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 13:11:53 by pvilchez          #+#    #+#              #
-#    Updated: 2023/09/18 19:28:11 by pvilchez         ###   ########.fr        #
+#    Updated: 2023/09/19 20:25:25 by pvilchez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRC_FILES = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c\
 		ft_itoa_long.c ft_printf.c ft_print_hex_cap.c ft_print_hex_long.c\
 		ft_print_hex.c ft_print_int.c ft_print_str.c ft_print_unsig_int.c\
 		ft_print_void.c\
-		ft_get_next_line.c ft_get_next_line_utils.c
+		ft_get_next_line.c ft_get_next_line_utils.c\
+		ft_free_lst.c
 
 SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)

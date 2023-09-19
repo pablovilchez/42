@@ -6,14 +6,11 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 17:38:39 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/18 23:10:40 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:41:53 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "../assets/MLX42/include/MLX42/MLX42.h"
+#include "fdf.h"
 
 #define WIDTH 512
 #define HEIGHT 512

@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 23:57:25 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/18 19:13:07 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/19 23:14:16 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,9 @@ int		ft_toupper(int ch);
 typedef struct s_list
 {
 	int				num;
-	int				index;
-	int				pos;
+	int				pos_x;
+	int				pos_y;
 	int				target_pos;
-	int				cost_a;
-	int				cost_b;
 	struct s_list	*next;
 }					t_node;
 void	ft_lstadd_back(t_node **lst, t_node *new);
@@ -72,7 +70,7 @@ void	ft_lstadd_front(t_node **lst, t_node *new);
 void	ft_lstclear(t_node **lst);
 void	ft_lstdelone(t_node *lst);
 t_node	*ft_lstlast(t_node *lst);
-t_node	*ft_lstnew(int num);
+t_node	*ft_lstnew(int num, int x, int y);
 int		ft_lstsize(t_node *lst);
 void	*free_all(char **matrix, size_t num);
 // Funciones de ft_printf
@@ -94,5 +92,7 @@ size_t	find_nl(char *str);
 size_t	count_nl(char *str);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 void	*ft_calloc_gnl(size_t number, size_t size);
+// Funciones por mi cuenta
+void	ft_free_lst(char **strlst);
 
 #endif

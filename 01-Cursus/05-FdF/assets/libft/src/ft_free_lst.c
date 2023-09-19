@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_free_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 21:02:06 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/19 23:00:37 by pvilchez         ###   ########.fr       */
+/*   Created: 2023/09/19 18:41:36 by pvilchez          #+#    #+#             */
+/*   Updated: 2023/09/19 20:25:05 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_node	*ft_lstnew(int num, int x, int y)
+void	ft_free_lst(char **strlst)
 {
-	t_node	*node;
+	int	i;
 
-	node = malloc(sizeof(t_node));
-	if (node == NULL)
-		return (NULL);
-	node->num = num;
-	node->pos_x = x;
-	node->pos_y = y;
-	node->next = NULL;
-	return (node);
+	i = 0;
+	while (strlst[i])
+	{
+		free (strlst[i]);
+		i++;
+	}
+	free (strlst);
 }
