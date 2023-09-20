@@ -1,35 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_matrix_utils.c                                 :+:      :+:    :+:   */
+/*   print_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 23:41:03 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/20 00:17:12 by pvilchez         ###   ########.fr       */
+/*   Created: 2023/09/20 19:07:50 by pvilchez          #+#    #+#             */
+/*   Updated: 2023/09/21 00:05:22 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	**nodelst_to_matrix(t_node **nodelst)
+void	print_matrix(t_vertex **matrix, int *size)
 {
-	int		**matrix;
-	t_node	*node;
-	int		line;
-	int		len;
-	int		aux;
+	int	x;
+	int	y;
 
-	line = 0;
-	len = 0;
-	aux = 0;
-	if (check_size(nodelst) && *matrix != NULL)
+	ft_printf("Valor de x: %i     Valor de y: %i\n", size[0], size[1]);
+	y = 0;
+	while (y < size[1])
 	{
-		node = *nodelst;
-		while (node)
+		x = 0;
+		while (x < size[0])
 		{
-			node = node->next;
+			ft_printf(" %i ", matrix[y][x].high);
+			x++;
 		}
+		ft_printf("\n");
+		y++;
 	}
-	return (NULL);
 }
+
+/*
+while (matrix[y])
+	{
+		x = 0;
+		while (&matrix[y][x])
+		{
+			ft_printf(" %i ", matrix[y][x].high);
+			x++;
+		}
+		ft_printf("\n");
+		y++;
+	}
+*/

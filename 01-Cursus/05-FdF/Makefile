@@ -1,6 +1,7 @@
 NAME = fdf
 
 CC = gcc -g
+MLX42FLAGS = -Iinclude -ldl -lglfw -pthread -lm
 CFLAGS = -Wall -Wextra -Werror
 REMOVE = rm -r
 
@@ -14,9 +15,9 @@ LIBFT_LIB_PATH = assets/libft/libft.a
 MLX42_PATH = assets/MLX42
 MLX42_LIB_PATH = assets/MLX42/libmlx42.a
 
-HEADERS	= -I $(LIBFT_PATH)/include/ $(MLX42_PATH)/include/MLX42/MLX42.h -I ./include
+HEADERS	= -I $(LIBFT_PATH)/include/ -I $(MLX42_PATH)/include/MLX42/ -I ./include
 
-SRC_FILES = main.c
+SRC_FILES = fdf.c get_matrix.c print_matrix.c
 
 SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
@@ -29,7 +30,7 @@ YELLOW = \033[1;38;5;226m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(HEADERS) -o $@
+	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(HEADERS) -o $@ $(MLX42FLAGS)
 	@echo "\n$(ORANGE)$(U_LINE)$(NAME): Mandatory Compiled$(RESET) \n"
 
 $(LIBFT_LIB_PATH):
@@ -46,10 +47,12 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 clean:
 	@$(REMOVE) $(OBJ_PATH)
 	@$(MAKE) -C $(LIBFT_PATH) clean
+	@$(MAKE) -C $(MLX42_PATH) clean
 
 fclean: clean
 	@$(REMOVE) $(NAME)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
+	@$(MAKE) -C $(MLX42_PATH) fclean
 
 re: fclean all
 
