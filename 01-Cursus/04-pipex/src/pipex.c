@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 21:42:05 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/14 18:58:32 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/21 12:57:16 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv, char **envp)
 			error("Error creating child process");
 		if (pid == 0)
 			f_child(argv, envp, pipex_fd);
-		waitpid(pid, NULL, 0);
+		waitpid(pid, NULL, WNOHANG);
 		f_parent(argv, envp, pipex_fd);
 	}
 	return (0);
