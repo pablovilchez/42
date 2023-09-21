@@ -1,9 +1,10 @@
 NAME = fdf
 
 CC = gcc -g
-MLX42FLAGS = -Iinclude -ldl -lglfw -pthread -lm
+MLX42FLAGS_LINUX = -Iinclude -ldl -lglfw -pthread -lm
+MLX42FLAGS_MAC = -lglfw -L "/Users/${USER}/.brew/opt/glfw/lib/"
 CFLAGS = -Wall -Wextra -Werror
-REMOVE = rm -r
+REMOVE = rm -rf
 
 OBJ_PATH = obj
 SRC_PATH = src
@@ -27,10 +28,10 @@ RESET = \033[0m
 U_LINE = \033[4m
 YELLOW = \033[1;38;5;226m
 
-all: $(NAME)
+all: $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(HEADERS) -o $@ $(MLX42FLAGS)
+	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(MLX42FLAGS_MAC) $(HEADERS) -o $@
 	@echo "\n$(ORANGE)$(U_LINE)$(NAME): Mandatory Compiled$(RESET) \n"
 
 $(LIBFT_LIB_PATH):
@@ -56,4 +57,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH)

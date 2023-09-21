@@ -6,7 +6,7 @@
 #    By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/20 13:11:53 by pvilchez          #+#    #+#              #
-#    Updated: 2023/09/19 20:25:25 by pvilchez         ###   ########.fr        #
+#    Updated: 2023/09/21 10:28:37 by pvilchez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 CC = gcc -c
 LIB = ar rcs
 CFLAGS = -Wall -Wextra -Werror
-REMOVE = rm -r
+REMOVE = rm -rf
 
 OBJ_PATH = obj
 SRC_PATH = src
@@ -58,10 +58,10 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@echo "$(YELLOW)$(NAME) Compiling:$(RESET) $(notdir $<)"
 
 clean:
-	@$(REMOVE) $(OBJ_PATH)
+	$(REMOVE) $(OBJ_PATH)
 
 fclean: clean
-	@$(REMOVE) $(NAME)
+	$(REMOVE) $(NAME)
 
 re: fclean all
 

@@ -2,7 +2,7 @@ NAME = pipex
 
 CC = gcc -g
 CFLAGS = -Wall -Wextra -Werror
-REMOVE = rm -r
+REMOVE = rm -rf
 
 OBJ_PATH = obj
 SRC_PATH = src
