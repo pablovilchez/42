@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 23:57:25 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/20 18:09:03 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/21 18:49:14 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,5 @@ char	*ft_strjoin_gnl(char *s1, char *s2);
 void	*ft_calloc_gnl(size_t number, size_t size);
 // Funciones por mi cuenta
 void	ft_free_lst(char **strlst);
-
-
-// Mis estructuras
-typedef struct s_vertex
-{
-	int				high;
-	int				x;
-	int				y;
-	int				tar_x;
-	int				tar_y;
-}					t_vertex;
 
 #endif

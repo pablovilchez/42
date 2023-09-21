@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:53:00 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/21 00:08:01 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/21 19:07:01 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_vertex	**get_matrix(int argc, char *argv[], int *size)
 			matrix = text_to_matrix(get_text, &s_err, size);
 			if (s_err == 0)
 				return (matrix);
-			//TODO liberar matrix si error
+			free_matrix(matrix, size);
 		}
 	}
 	return (NULL);

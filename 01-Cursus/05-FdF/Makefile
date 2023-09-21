@@ -18,7 +18,7 @@ MLX42_LIB_PATH = assets/MLX42/libmlx42.a
 
 HEADERS	= -I $(LIBFT_PATH)/include/ -I $(MLX42_PATH)/include/MLX42/ -I ./include
 
-SRC_FILES = fdf.c get_matrix.c print_matrix.c
+SRC_FILES = fdf.c get_matrix.c start_matrix.c print_matrix.c free_matrix.c
 
 SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)
@@ -31,7 +31,7 @@ YELLOW = \033[1;38;5;226m
 all: $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(MLX42FLAGS_MAC) $(HEADERS) -o $@
+	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(MLX42FLAGS_LINUX) $(HEADERS) -o $@
 	@echo "\n$(ORANGE)$(U_LINE)$(NAME): Mandatory Compiled$(RESET) \n"
 
 $(LIBFT_LIB_PATH):

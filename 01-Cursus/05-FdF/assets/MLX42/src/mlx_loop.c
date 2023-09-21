@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 01:24:36 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/09/15 22:04:42 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/21 21:48:06 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ bool mlx_loop_hook(mlx_t* mlx, void (*f)(void*), void* param)
 // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 void mlx_loop(mlx_t* mlx)
 {
-	printf("TODO OK");
 	MLX_ASSERT(mlx, "Parameter can't be null");
 
 	double start, oldstart = 0;
