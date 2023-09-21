@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:42:23 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/21 12:10:43 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:31:36 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	main(int argc, char *argv[])
 	matrix = get_matrix(argc, argv, size);
 	start_matrix(matrix, size);
 	print_matrix(matrix, size);
+	free_matrix(matrix, size);
 	return (0);
 }

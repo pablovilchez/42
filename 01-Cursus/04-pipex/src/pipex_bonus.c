@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:09:44 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/14 19:14:36 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:31:36 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,3 @@ int	main(int argc, char **argv, char **envp)
 	}
 	bonus_syntax_error();
 }
-
