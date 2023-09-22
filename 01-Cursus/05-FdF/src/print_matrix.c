@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:07:50 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/22 11:50:24 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:04:08 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ void	new_line_v(t_axis pos_a, t_axis pos_b, mlx_image_t *image)
 	}
 }
 
-void	print_lines(t_vertex **matrix, int rows, mlx_image_t *image)
+void	print_lines(t_vertex **matrix, int *rows, mlx_image_t *image)
 {
 	int			x;
 	int			y;
 
 	y = 0;
-	while (y < rows)
+	while (y < *rows)
 	{
 		x = 0;
 		while (x < matrix[y][x].len)
 		{
 			if (x + 1 < matrix[y][x].len)
 				new_line_h(matrix[y][x].dest, matrix[y][x + 1].dest, image);
-			if (y + 1 < rows && matrix[y + 1][0].len > x)
+			if (y + 1 < *rows && matrix[y + 1][0].len > x)
 				new_line_v(matrix[y][x].dest, matrix[y + 1][x].dest, image);
 			x++;
 		}
@@ -77,7 +77,7 @@ void	error_exit(mlx_t *mlx)
 	puts(mlx_strerror(mlx_errno));
 }
 
-int32_t	print_matrix(t_vertex **matrix, int rows)
+int32_t	print_matrix(t_vertex **matrix, int *rows)
 {
 	static mlx_image_t	*image;
 	mlx_t				*mlx;

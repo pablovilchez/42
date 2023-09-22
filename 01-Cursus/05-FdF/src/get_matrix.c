@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:53:00 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/22 13:54:41 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:50:56 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ t_vertex	**get_matrix(int argc, char *argv[], int *rows)
 	int			filefd;
 	char		*get_text;
 	t_vertex	**matrix;
-	int			s_err;
 
-	s_err = 0;
 	if (argc != 2)
 		ft_printf("Error: bad arguments.");
 	else
@@ -103,9 +101,7 @@ t_vertex	**get_matrix(int argc, char *argv[], int *rows)
 			get_text = file_to_str(filefd);
 			close(filefd);
 			matrix = text_to_matrix(get_text, rows);
-			if (s_err == 0)
-				return (matrix);
-			free_matrix(matrix, *rows);
+			free_matrix(matrix, rows);
 		}
 	}
 	return (NULL);

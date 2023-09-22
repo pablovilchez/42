@@ -6,18 +6,18 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:01:58 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/22 11:42:50 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:06:11 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_matrix(t_vertex **matrix, int rows)
+void	free_matrix(t_vertex **matrix, int *rows)
 {
 	int	y;
 
 	y = 0;
-	while (y < rows)
+	while (y < *rows)
 	{
 		free(matrix[y]);
 		y++;
