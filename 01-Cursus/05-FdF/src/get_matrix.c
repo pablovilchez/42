@@ -6,26 +6,23 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:53:00 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/21 19:07:01 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:54:41 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	check_size_error(int y, int total_x, int *s_err, int *size)
+int	count_elements(char **line)
 {
-	static int	num;
+	int	i;
 
-	if (y == 0)
-	{
-		num = total_x;
-		size[0] = num;
-	}
-	else if (total_x != num)
-		*s_err = 1;
+	i = 0;
+	while (line[i])
+		i++;
+	return (i);
 }
 
-t_vertex	**lines_to_vertex(char **lines, int total_y, int *s_err, int *size)
+t_vertex	**lines_to_vertex(char **lines, int total_y)
 {
 	int			y;
 	int			total_x;
@@ -37,15 +34,15 @@ t_vertex	**lines_to_vertex(char **lines, int total_y, int *s_err, int *size)
 	while (lines[y])
 	{
 		line = ft_split(lines[y], ' ');
-		total_x = 0;
-		while (line[total_x])
-			total_x++;
+		total_x = count_elements(line);
 		matrix[y] = (t_vertex *)ft_calloc(total_x, sizeof(t_vertex));
-		check_size_error(y, total_x, s_err, size);
+		line_len(matrix[y], total_x);
 		total_x = 0;
 		while (line[total_x])
 		{
 			matrix[y][total_x].high = ft_atoi(line[total_x]);
+//			if (ft_strchr(line[total_x], ','))
+//				capture_color(line[total_x], &matrix[y][total_x].color);
 			total_x++;
 		}
 		y++;
@@ -54,7 +51,7 @@ t_vertex	**lines_to_vertex(char **lines, int total_y, int *s_err, int *size)
 	return (matrix);
 }
 
-t_vertex	**text_to_matrix(char *get_text, int *s_err, int *size)
+t_vertex	**text_to_matrix(char *get_text, int *rows)
 {
 	char		**lines;
 	int			total_y;
@@ -64,8 +61,8 @@ t_vertex	**text_to_matrix(char *get_text, int *s_err, int *size)
 	lines = ft_split(get_text, '\n');
 	while (lines[total_y])
 		total_y++;
-	size[1] = total_y;
-	matrix = lines_to_vertex(lines, total_y, s_err, size);
+	*rows = total_y;
+	matrix = lines_to_vertex(lines, total_y);
 	ft_free_lst(lines);
 	return (matrix);
 }
@@ -86,7 +83,7 @@ char	*file_to_str(int filefd)
 	return (get_text);
 }
 
-t_vertex	**get_matrix(int argc, char *argv[], int *size)
+t_vertex	**get_matrix(int argc, char *argv[], int *rows)
 {
 	int			filefd;
 	char		*get_text;
@@ -105,10 +102,10 @@ t_vertex	**get_matrix(int argc, char *argv[], int *size)
 		{
 			get_text = file_to_str(filefd);
 			close(filefd);
-			matrix = text_to_matrix(get_text, &s_err, size);
+			matrix = text_to_matrix(get_text, rows);
 			if (s_err == 0)
 				return (matrix);
-			free_matrix(matrix, size);
+			free_matrix(matrix, *rows);
 		}
 	}
 	return (NULL);
