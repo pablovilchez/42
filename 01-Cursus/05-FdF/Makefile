@@ -6,7 +6,7 @@
 #    By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/22 13:19:25 by pvilchez          #+#    #+#              #
-#    Updated: 2023/09/22 15:12:21 by pvilchez         ###   ########.fr        #
+#    Updated: 2023/09/24 20:59:48 by pvilchez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ MLX42_LIB_PATH = assets/MLX42/libmlx42.a
 
 HEADERS	= -I $(LIBFT_PATH)/include/ -I $(MLX42_PATH)/include/MLX42/ -I ./include
 
-SRC_FILES = fdf.c get_matrix.c start_matrix.c print_matrix.c free_matrix.c
+SRC_FILES = fdf.c get_matrix.c start_matrix.c print_matrix.c free_matrix.c color_functions.c\
+			utils.c
 
 SRC := $(addprefix $(SRC_PATH)/, $(SRC_FILES))
 OBJ = $(SRC:$(SRC_PATH)/%.c=$(OBJ_PATH)/%.o)

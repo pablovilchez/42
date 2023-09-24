@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:18:29 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/22 16:48:55 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:45:25 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@ void	make_isometric(t_vertex **matrix, int *rows)
 {
 	int		x;
 	int		y;
+	int		lenght;
 
 	y = 0;
 	while (y < *rows)
 	{
 		x = 0;
-		while (x < matrix[y][x].len)
+		lenght = matrix[y][x].len;
+		while (x < lenght)
 		{
-			matrix[y][x].dest.x = matrix[y][x].start.x;
-			matrix[y][x].dest.y = matrix[y][x].start.y - matrix[y][x].high;
+			matrix[y][x].dest.x = (1.0 / sqrt(2)) * matrix[y][x].start.x;
+			matrix[y][x].dest.x -= (1.0 / sqrt(2)) * matrix[y][x].start.y - 300;
+			matrix[y][x].dest.y = (1.0 / sqrt(6)) * matrix[y][x].start.x;
+			matrix[y][x].dest.y += (1.0 / sqrt(6)) * matrix[y][x].start.y;
+			matrix[y][x].dest.y -= matrix[y][x].high * 15 - 100;
 			x++;
 		}
 		y++;
@@ -49,24 +54,20 @@ void	start_matrix(t_vertex **matrix, int *rows)
 	int		margin;
 	int		x;
 	int		y;
+	int		lenght;
 
-	ft_printf("%i\n", matrix[0][0].len - 1);
-	start.x = 100;
-	start.y = 100;
+	start.x = 0;
+	start.y = 0;
 	margin = 30;
 	y = 0;
 	while (y < *rows)
 	{
 		x = 0;
-		ft_printf("ok 1\n");
-		ft_printf("%i\n", matrix[y][x].len);
-		ft_printf("ok 1\n");
-		while (x < matrix[y][x].len)
+		lenght = matrix[y][x].len;
+		while (x < lenght)
 		{
-			ft_printf("ok 2");
-			matrix[y][x].start.x = start.x + x * margin + y * 10;
-			matrix[y][x].start.y = start.y + y * margin / 2;
-			matrix[y][x].color = 0xFFFFFFFF;
+			matrix[y][x].start.x = start.x + margin * x;
+			matrix[y][x].start.y = start.y + margin * y;
 			x++;
 		}
 		y++;

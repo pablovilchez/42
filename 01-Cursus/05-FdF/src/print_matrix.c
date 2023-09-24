@@ -6,65 +6,82 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:07:50 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/22 16:04:08 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/24 22:40:05 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	new_line_h(t_axis pos_a, t_axis pos_b, mlx_image_t *image)
+void	paint_line(t_vertex *a, t_vertex *b, mlx_image_t *img, t_diff diff)
 {
-	int	x;
-	int	y;
-	int	count;
-	int	step;
+	int			current_x;
+	int			current_y;
+	int			err2;
+	uint32_t	c;
 
-	count = 0;
-	x = pos_a.x;
-	while (x < pos_b.x)
+	current_x = a->dest.x;
+	current_y = a->dest.y;
+	c = color(count_pix(a, b), a->color, b->color, 0);
+	while (current_x != b->dest.x || current_y != b->dest.y)
 	{
-		step = count * (pos_b.y - pos_a.y) / (pos_b.x - pos_a.x);
-		y = pos_a.y + step;
-		mlx_put_pixel(image, x, y, 0x00FFFFFF);
-		x++;
-		count++;
+		mlx_put_pixel(img, current_x, current_y, c);
+		err2 = 2 * diff.err;
+		if (err2 > -diff.dy)
+		{
+			diff.err -= diff.dy;
+			current_x += diff.sx;
+		}
+		if (err2 < diff.dx)
+		{
+			diff.err += diff.dx;
+			current_y += diff.sy;
+		}
+		c = color(count_pix(a, b), a->color, b->color, 1);
 	}
+	mlx_put_pixel(img, current_x, current_y, c);
 }
 
-void	new_line_v(t_axis pos_a, t_axis pos_b, mlx_image_t *image)
+void	new_line(t_vertex *ver_a, t_vertex *ver_b, mlx_image_t *image)
 {
-	int	x;
-	int	y;
-	int	count;
-	int	step;
+	t_diff	diff;
 
-	count = 0;
-	y = pos_a.y;
-	while (y < pos_b.y)
-	{
-		step = count * (pos_b.x - pos_a.x) / (pos_b.y - pos_a.y);
-		x = pos_a.x + step;
-		mlx_put_pixel(image, x, y, 0x00FFFFFF);
-		y++;
-		count++;
-	}
+	diff.dx = abs(ver_b->dest.x - ver_a->dest.x);
+	diff.dy = abs(ver_b->dest.y - ver_a->dest.y);
+	if (ver_a->dest.x < ver_b->dest.x)
+		diff.sx = 1;
+	else
+		diff.sx = -1;
+	if (ver_a->dest.y < ver_b->dest.y)
+		diff.sy = 1;
+	else
+		diff.sy = -1;
+	diff.err = diff.dx - diff.dy;
+	paint_line(ver_a, ver_b, image, diff);
 }
 
 void	print_lines(t_vertex **matrix, int *rows, mlx_image_t *image)
 {
-	int			x;
-	int			y;
+	int	x;
+	int	y;
+	int	lenght;
+	int	next_len;
 
 	y = 0;
 	while (y < *rows)
 	{
 		x = 0;
-		while (x < matrix[y][x].len)
+		lenght = matrix[y][x].len;
+		if (y + 1 < *rows)
+			next_len = matrix[y + 1][0].len;
+		while (x < lenght)
 		{
-			if (x + 1 < matrix[y][x].len)
-				new_line_h(matrix[y][x].dest, matrix[y][x + 1].dest, image);
-			if (y + 1 < *rows && matrix[y + 1][0].len > x)
-				new_line_v(matrix[y][x].dest, matrix[y + 1][x].dest, image);
+			if (x + 1 < lenght)
+				new_line(&matrix[y][x], &matrix[y][x + 1], image);
+			if (y + 1 < *rows)
+			{
+				if (next_len > x)
+					new_line(&matrix[y][x], &matrix[y + 1][x], image);
+			}
 			x++;
 		}
 		y++;
@@ -82,20 +99,21 @@ int32_t	print_matrix(t_vertex **matrix, int *rows)
 	static mlx_image_t	*image;
 	mlx_t				*mlx;
 
-	mlx = mlx_init(800, 800, "FdF", true);
+	mlx = mlx_init(900, 600, "FdF", true);
 	if (!mlx)
 	{
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	image = mlx_new_image(mlx, 800, 800);
+	image = mlx_new_image(mlx, 800, 500);
 	if (!image)
 	{
 		error_exit(mlx);
 		return (EXIT_FAILURE);
 	}
 	print_lines(matrix, rows, image);
-	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
+	mlx_put_pixel(image, 0, 0, 0xFFFFFFFF);
+	if (mlx_image_to_window(mlx, image, 50, 50) == -1)
 	{
 		error_exit(mlx);
 		return (EXIT_FAILURE);

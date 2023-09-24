@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:53:00 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/22 16:50:56 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/23 21:10:05 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ t_vertex	**lines_to_vertex(char **lines, int total_y)
 		while (line[total_x])
 		{
 			matrix[y][total_x].high = ft_atoi(line[total_x]);
-//			if (ft_strchr(line[total_x], ','))
-//				capture_color(line[total_x], &matrix[y][total_x].color);
+			capture_init_color(line[total_x], &matrix[y][total_x].color);
 			total_x++;
 		}
 		y++;
@@ -101,7 +100,7 @@ t_vertex	**get_matrix(int argc, char *argv[], int *rows)
 			get_text = file_to_str(filefd);
 			close(filefd);
 			matrix = text_to_matrix(get_text, rows);
-			free_matrix(matrix, rows);
+			return (matrix);
 		}
 	}
 	return (NULL);
