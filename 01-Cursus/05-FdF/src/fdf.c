@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:42:23 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/22 16:49:55 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/27 22:24:15 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 int	main(int argc, char *argv[])
 {
 	t_vertex	**matrix;
+	t_mmsizes	mmsizes;
 	int			rows;
 
 	matrix = get_matrix(argc, argv, &rows);
-	start_matrix(matrix, &rows);
-	print_matrix(matrix, &rows);
+	start_matrix(matrix, &rows, &mmsizes);
+	print_matrix(matrix, &rows, &mmsizes);
 	free_matrix(matrix, &rows);
 	return (0);
 }

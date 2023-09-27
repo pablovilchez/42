@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:07:50 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/24 22:40:05 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/27 22:02:48 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,26 +94,26 @@ void	error_exit(mlx_t *mlx)
 	puts(mlx_strerror(mlx_errno));
 }
 
-int32_t	print_matrix(t_vertex **matrix, int *rows)
+int32_t	print_matrix(t_vertex **matrix, int *rows, t_mmsizes *mmsizes)
 {
 	static mlx_image_t	*image;
 	mlx_t				*mlx;
 
-	mlx = mlx_init(900, 600, "FdF", true);
+	calc_img_size(mmsizes, matrix, rows);
+	mlx = mlx_init(1600, 900, "FdF", false);
 	if (!mlx)
 	{
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	image = mlx_new_image(mlx, 800, 500);
+	image = mlx_new_image(mlx, 1500, 850);
 	if (!image)
 	{
 		error_exit(mlx);
 		return (EXIT_FAILURE);
 	}
 	print_lines(matrix, rows, image);
-	mlx_put_pixel(image, 0, 0, 0xFFFFFFFF);
-	if (mlx_image_to_window(mlx, image, 50, 50) == -1)
+	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
 	{
 		error_exit(mlx);
 		return (EXIT_FAILURE);
