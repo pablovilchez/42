@@ -6,11 +6,20 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:16:12 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/24 20:57:25 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:29:30 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	close_window(mlx_key_data_t keydata, void *mlx)
+{
+	if (keydata.key == MLX_KEY_ESCAPE)
+	{
+		if (keydata.action == MLX_PRESS)
+			mlx_close_window(mlx);
+	}
+}
 
 int	pix_num(t_vertex *v_a, t_vertex *v_b, t_diff diff)
 {

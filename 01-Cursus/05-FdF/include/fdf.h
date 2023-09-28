@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:40:09 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/27 23:20:47 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:30:22 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 #include <math.h>
 #include "../assets/libft/include/libft.h"
 #include "../assets/MLX42/include/MLX42/MLX42.h"
+
+typedef struct s_s_exit
+{
+	mlx_t			*mlx;
+	mlx_key_data_t	keydata;
+}					t_s_exit;
+
 
 typedef struct s_max_min_matrix
 {
@@ -78,6 +85,7 @@ void		free_matrix(t_vertex **matrix, int *rows);
 // utils.c
 int			pix_num(t_vertex *v_a, t_vertex *v_b, t_diff diff);
 int			count_pix(t_vertex *vertex_a, t_vertex *vertex_b);
+void		close_window(mlx_key_data_t keydata, void *mlx);
 // adjust_values.c
 void		adjust_values(t_vertex **matrix, int *rows, t_mmsizes *mmsizes);
 void		calc_minims(t_vertex **matrix, int *rows, t_mmsizes *mmsizes);

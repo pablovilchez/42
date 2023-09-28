@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:33:19 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/28 10:16:12 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 20:26:49 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,20 @@ void	reduce_size(t_vertex **matrix, int *rows, int factor)
 
 void	calc_img_size(t_mmsizes *mmsizes, t_vertex **matrix, int *rows)
 {
-	if (mmsizes->max_x / 1400 > mmsizes->max_y / 800)
-		reduce_size(matrix, rows, mmsizes->max_x * 100 / 1400);
+	if (mmsizes->max_x > 1400 || mmsizes->max_y > 800)
+	{
+		if (mmsizes->max_x / 1400 > mmsizes->max_y / 800)
+			reduce_size(matrix, rows, mmsizes->max_x * 100 / 1400);
+		else
+			reduce_size(matrix, rows, mmsizes->max_y * 100 / 800);
+	}
 	else
-		reduce_size(matrix, rows, mmsizes->max_y * 100 / 800);
+	{
+		if (mmsizes->max_x / 1400 > mmsizes->max_y / 800)
+			reduce_size(matrix, rows, mmsizes->max_x * 100 / 1000);
+		else
+			reduce_size(matrix, rows, mmsizes->max_y * 100 / 600);
+	}
 }
 
 void	calc_maxims(t_vertex **matrix, int *rows, t_mmsizes *mmsizes)
