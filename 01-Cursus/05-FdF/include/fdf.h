@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:40:09 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/28 21:30:22 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 23:09:09 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void		free_matrix(t_vertex **matrix, int *rows);
 int			pix_num(t_vertex *v_a, t_vertex *v_b, t_diff diff);
 int			count_pix(t_vertex *vertex_a, t_vertex *vertex_b);
 void		close_window(mlx_key_data_t keydata, void *mlx);
+int			check_size(t_vertex **matrix, int rows);
 // adjust_values.c
 void		adjust_values(t_vertex **matrix, int *rows, t_mmsizes *mmsizes);
 void		calc_minims(t_vertex **matrix, int *rows, t_mmsizes *mmsizes);

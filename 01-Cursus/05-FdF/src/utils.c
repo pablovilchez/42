@@ -6,11 +6,27 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:16:12 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/28 21:29:30 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 23:07:37 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	check_size(t_vertex **matrix, int rows)
+{
+	int	y;
+
+	y = 0;
+	if (rows < 3)
+		return (1);
+	while (y < rows)
+	{
+		if (matrix[y][0].len < 3)
+			return (1);
+		y++;
+	}
+	return (0);
+}
 
 void	close_window(mlx_key_data_t keydata, void *mlx)
 {

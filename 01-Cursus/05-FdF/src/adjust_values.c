@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:33:19 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/28 20:26:49 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 23:14:02 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	calc_img_size(t_mmsizes *mmsizes, t_vertex **matrix, int *rows)
 	else
 	{
 		if (mmsizes->max_x / 1400 > mmsizes->max_y / 800)
-			reduce_size(matrix, rows, mmsizes->max_x * 100 / 1000);
+			reduce_size(matrix, rows, mmsizes->max_x * 100 / 600);
 		else
-			reduce_size(matrix, rows, mmsizes->max_y * 100 / 600);
+			reduce_size(matrix, rows, mmsizes->max_y * 100 / 250);
 	}
 }
 
