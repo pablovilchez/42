@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:33:19 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/27 23:33:50 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:16:12 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	reduce_size(t_vertex **matrix, int *rows, int factor)
 	int	lenght;
 
 	y = 0;
-	ft_printf("   factor: %i\n", factor);
-	ft_printf("valor de 2,2   x: %i   y: %i\n", matrix[2][2].dest.x, matrix[2][2].dest.y);
 	while (y < *rows)
 	{
 		x = 0;
@@ -37,23 +35,14 @@ void	reduce_size(t_vertex **matrix, int *rows, int factor)
 		}
 		y++;
 	}
-	ft_printf("valor de 2,2   x: %i   y: %i\n", matrix[2][2].dest.x, matrix[2][2].dest.y);
-	ft_printf("sale de reduce_size\n");
 }
 
 void	calc_img_size(t_mmsizes *mmsizes, t_vertex **matrix, int *rows)
 {
-	ft_printf("   max_x: %i   max_y: %i\n", mmsizes->max_x, mmsizes->max_y);
 	if (mmsizes->max_x / 1400 > mmsizes->max_y / 800)
-	{
-		ft_printf("entra por x\n");
 		reduce_size(matrix, rows, mmsizes->max_x * 100 / 1400);
-	}
 	else
-	{
-		ft_printf("entra por y\n");
 		reduce_size(matrix, rows, mmsizes->max_y * 100 / 800);
-	}
 }
 
 void	calc_maxims(t_vertex **matrix, int *rows, t_mmsizes *mmsizes)

@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 19:07:50 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/27 22:02:48 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:54:48 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,22 @@ void	error_exit(mlx_t *mlx)
 	puts(mlx_strerror(mlx_errno));
 }
 
+void	close_window(mlx_key_data_t keydata, void* mlx)
+{
+	(void)keydata;
+	mlx_close_window(mlx);
+}
+
 int32_t	print_matrix(t_vertex **matrix, int *rows, t_mmsizes *mmsizes)
 {
 	static mlx_image_t	*image;
 	mlx_t				*mlx;
+	mlx_key_data_t		keydata;
 
+	keydata.key = MLX_KEY_ESCAPE;
+	keydata.action = MLX_PRESS;
 	calc_img_size(mmsizes, matrix, rows);
-	mlx = mlx_init(1600, 900, "FdF", false);
+	mlx = mlx_init(1600, 900, "FdF", true);
 	if (!mlx)
 	{
 		puts(mlx_strerror(mlx_errno));
@@ -118,6 +127,7 @@ int32_t	print_matrix(t_vertex **matrix, int *rows, t_mmsizes *mmsizes)
 		error_exit(mlx);
 		return (EXIT_FAILURE);
 	}
+	mlx_key_hook(mlx, &close_window, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);

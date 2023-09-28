@@ -6,7 +6,7 @@
 #    By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/22 13:19:25 by pvilchez          #+#    #+#              #
-#    Updated: 2023/09/26 21:32:20 by pvilchez         ###   ########.fr        #
+#    Updated: 2023/09/28 09:37:19 by pvilchez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ YELLOW = \033[1;38;5;226m
 all: $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(MLX42FLAGS_LINUX) $(HEADERS) -o $@
+	@$(CC) $(OBJ) $(LIBFT_LIB_PATH) $(MLX42_LIB_PATH) $(MLX42FLAGS_MAC) $(HEADERS) -o $@
 	@echo "\n$(ORANGE)$(U_LINE)$(NAME): Mandatory Compiled$(RESET) \n"
 
 $(LIBFT_LIB_PATH):
