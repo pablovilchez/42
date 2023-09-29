@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:16:12 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/28 23:07:37 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:56:20 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,3 @@ int	count_pix(t_vertex *vertex_a, t_vertex *vertex_b)
 	diff.err = diff.dx - diff.dy;
 	return (pix_num(vertex_a, vertex_b, diff));
 }
-

@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 17:53:00 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/09/28 22:53:44 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:54:06 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,15 @@ char	*file_to_str(int filefd)
 {
 	char	*get_text;
 	char	*buffer;
+	char	*aux;
 
 	get_text = (char *)ft_calloc(1, sizeof(char));
 	buffer = ft_get_next_line(filefd);
 	while (buffer)
 	{
+		aux = get_text;
 		get_text = ft_strjoin(get_text, buffer);
+		free(aux);
 		free(buffer);
 		buffer = ft_get_next_line(filefd);
 	}
@@ -100,6 +103,7 @@ t_vertex	**get_matrix(int argc, char *argv[], int *rows)
 			get_text = file_to_str(filefd);
 			close(filefd);
 			matrix = text_to_matrix(get_text, rows);
+			free(get_text);
 			return (matrix);
 		}
 	}
