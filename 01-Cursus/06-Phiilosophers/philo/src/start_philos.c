@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   init_philos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 18:36:20 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/10/02 18:28:12 by pvilchez         ###   ########.fr       */
+/*   Created: 2023/10/04 23:02:35 by pvilchez          #+#    #+#             */
+/*   Updated: 2023/10/04 23:36:15 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philosophers.h"
 
-int	ft_atoi(const char *str)
+int	start_philos(t_table *table)
 {
-	int	i;
-	int	total;
-	int	s;
-
-	i = 0;
-	total = 0;
-	s = 1;
-	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' || str[i] == '\r'
-		|| str[i] == '\t' || str[i] == '\v')
-		i++;
-	if (str[i] == '-')
-		s *= -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (ft_isdigit(str[i]))
-	{
-		total = total * 10 + (str[i] - '0');
-		i++;
-	}
-	return (total * s);
+	
 }
