@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 22:20:48 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/10/04 23:15:58 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:06:15 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	destroy_mutex(pthread_mutex_t *forks)
 		forks++;
 	}
 	free(forks);
+	printf("\nMutex destruido. Memoria de Forks liberada\n");
 	return (0);
 }
 
@@ -41,6 +42,7 @@ int	create_mutex(t_table *table, pthread_mutex_t *forks)
 			}
 			i++;
 		}
+		printf("\nMutex creados. Éxito reservando memoria para Forks.\n");
 		return (0);
 	}
 	printf("Error: error in forks malloc.");

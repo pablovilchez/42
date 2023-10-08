@@ -6,7 +6,7 @@
 /*   By: pvilchez <pvilchez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 23:11:11 by pvilchez          #+#    #+#             */
-/*   Updated: 2023/10/04 23:37:08 by pvilchez         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:20:26 by pvilchez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 typedef struct s_philo
 {
 	int				pos;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	struct timeval	t_die;
 	struct timeval	t_eat;
 	struct timeval	t_sleep;
@@ -32,8 +34,6 @@ typedef struct s_philo
 typedef struct s_table
 {
 	int				num_philos;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
 	struct timeval	t_die;
 	struct timeval	t_eat;
 	struct timeval	t_sleep;
@@ -58,6 +58,11 @@ int				create_mutex(t_table *table, pthread_mutex_t *forks);
 int				destroy_mutex(pthread_mutex_t *forks);
 
 // start_philos.c
-int				start_philos(t_table *table);
+int				run_philos(t_table *table);
+
+// philo_actions.c
+void			phi_eat(void);
+void			phi_sleep(void);
+void			phi_think(void);
 
 #endif
